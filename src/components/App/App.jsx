@@ -55,12 +55,12 @@ export default class App extends Component {
     imagesAPI.fetchImages(this.state.query)
       .then(({ data }) =>{
         this.setState((state) => ({ images: [...state.images, ...data.hits] }));
-        if (imagesAPI.page > 1) {this.scrollTo()}
+        if (imagesAPI.page > 1) {this.windowScrollTo()}
       })
       .catch((err) => console.error(err))
       .finally(() => this.setState({ isLoading: false }));
   }
-  scrollTo () {
+  windowScrollTo () {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
       behavior: 'smooth',
